@@ -1,6 +1,9 @@
 import React from "react";
 import Button from "../../Common/Button/button";
 import "./styles.css";
+import gradient from "../../../assets/gradient.png";
+import iPhone from "../../../assets/iphone.png";
+import { motion } from "framer-motion";
 function LandingPageComponent() {
   return (
     <div className="landing-wrapper">
@@ -16,7 +19,10 @@ function LandingPageComponent() {
           <Button text="Share App" outlined={true} />
         </div>
       </div>
-      <div className="landing-right"></div>
+      <div className="landing-right">
+        <img src={gradient} className="gradient" />
+        <img src={iPhone} className="iphone" />
+      </div>
     </div>
   );
 }

@@ -34,3 +34,96 @@
   align-items: center;
   gap: 1rem;
 }
+
+.landing-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  position: relative;
+}
+
+.gradient {
+  position: absolute;
+  max-width: 300px;
+  top: 6rem;
+  object-fit: contain;
+  z-index: 0;
+}
+
+.iphone {
+  position: absolute;
+  max-width: 380px;
+  object-fit: contain;
+  z-index: 1;
+  right: 0rem;
+}
+
+@media only screen and (max-width: 1250px) {
+  .landing-left {
+    width: 60%;
+  }
+
+  .gradient {
+    max-width: 250px;
+    top: 4rem;
+  }
+  .iphone {
+    max-width: 300px;
+  }
+  .heading-1,
+  .heading-2 {
+    font-size: 5rem;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .gradient {
+    max-width: 230px;
+    top: 3rem;
+  }
+  .iphone {
+    max-width: 280px;
+  }
+  .heading-1,
+  .heading-2 {
+    font-size: 4rem;
+  }
+  .para {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .landing-wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .landing-left {
+    width: 100%;
+    text-align: center;
+  }
+
+  .landing-right {
+    justify-content: center;
+    margin-right: auto;
+    margin-top: 4rem;
+  }
+
+  .iphone {
+    left: auto;
+    right: auto;
+  }
+
+  .heading-1,
+  .heading-2 {
+    font-size: 3rem;
+  }
+  .para {
+    font-size: 0.8rem;
+  }
+  .btn-flex {
+    justify-content: center;
+  }
+}
