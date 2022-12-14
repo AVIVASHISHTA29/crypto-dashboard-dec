@@ -43,14 +43,14 @@ function TabsComponent({ coins }) {
           <TabPanel value="grid" className="tabPanel">
             <Box className="grid-flex">
               {coins.map((coin, i) => (
-                <Grid coin={coin} key={i} />
+                <Grid coin={coin} key={i} delay={((i + 5) % 5) * 0.1} />
               ))}
             </Box>
           </TabPanel>
           <TabPanel value="list" className="tabPanel">
             <table className="list-flex">
               {coins.map((coin, i) => (
-                <List coin={coin} key={i} />
+                <List coin={coin} key={i} delay={(i % 10) * 0.1} />
               ))}
             </table>
           </TabPanel>
