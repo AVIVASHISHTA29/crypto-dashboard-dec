@@ -55,6 +55,11 @@
   margin: 0;
 }
 
+.price-chip {
+  min-width: 4rem;
+  text-align: center;
+}
+
 .price-chip,
 .trending-icon {
   padding: 0.5rem 1rem;

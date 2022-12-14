@@ -5,3 +5,15 @@
   flex-wrap: wrap;
   gap: 1.5rem;
 }
+
+.list-flex {
+  width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .grid-flex {
+    margin-top: 1rem;
+  }
+  .tabPanel {
+    padding: 0.2rem !important;
+  }
+}
