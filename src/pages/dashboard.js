@@ -1,10 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "../components/Common/Header";
+import SearchComponent from "../components/Dashboard/Search/search";
 import TabsComponent from "../components/Dashboard/Tabs/tabs";
 
 function DashboardPage() {
   const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState("");
+  const onChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  var filteredCoins = coins.filter((coin) => {
+    if (
+      coin.name.toLowerCase().includes(search.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(search.toLowerCase())
+    ) {
+      return coin;
+    }
+  });
 
   useEffect(() => {
     getData();
@@ -30,7 +44,8 @@ function DashboardPage() {
   return (
     <div>
       <Header />
-      <TabsComponent coins={coins} />
+      <SearchComponent search={search} onChange={onChange} />
+      <TabsComponent coins={filteredCoins} />
     </div>
   );
 }
