@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 function Grid({ coin, delay }) {
   return (
-    <a href="/coin">
+    <a href={`/coin/${coin.id}`}>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
