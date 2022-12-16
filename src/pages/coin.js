@@ -13,15 +13,22 @@ function CoinPage() {
   const [coinData, setCoinData] = useState();
   const [coin, setCoin] = useState();
   const [loading, setLoading] = useState(false);
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [],
+  });
 
   useEffect(() => {
+    getData();
+  }, [id]);
+
+  const getData = () => {
     setLoading(true);
     axios
       .get(`https://api.coingecko.com/api/v3/coins/${id}`)
       .then((response) => {
         console.log("RESPONSE>>>", response.data);
         setCoinData(response.data);
-        setLoading(false);
         setCoin({
           id: response.data.id,
           name: response.data.name,
@@ -34,38 +41,47 @@ function CoinPage() {
           current_price: response.data.market_data.current_price.usd,
           market_cap: response.data.market_data.market_cap.usd,
         });
+        getPrices();
       })
       .catch((error) => {
         console.log("ERROR>>>", error);
         setLoading(false);
       });
-  }, [id]);
+  };
 
-  const chartData = {
-    labels: [
-      "Day 1",
-      "Day 2",
-      "Day 3",
-      "Day 4",
-      "Day 5",
-      "Day 6",
-      "Day 7",
-      "Day 8",
-      "Day 9",
-      "Day 10",
-    ],
-    datasets: [
-      {
-        label: "Hello World",
-        data: [90, 48, 73, 26, 75, 14, 37, 22, 81, 30],
-        borderColor: "#fff",
-      },
-    ],
+  const getPrices = () => {
+    setLoading(false);
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30&interval=daily`
+      )
+      .then((response) => {
+        console.log("PRICES>>>>", response.data.prices);
+        setChartData({
+          labels: response.data.prices.map(
+            (data) =>
+              new Date(data[0]).getDate() +
+              "/" +
+              (new Date(data[0]).getMonth() + 1)
+          ),
+          datasets: [
+            {
+              label: coin.name,
+              data: response.data.prices.map((data) => data[1]),
+              borderColor: "#fff",
+            },
+          ],
+        });
+      })
+      .catch((error) => {
+        console.log("ERROR>>>", error);
+        setLoading(false);
+      });
   };
 
   return (
     <div>
-      {loading || !coin?.id ? (
+      {loading || !coin?.id || !chartData ? (
         <Loader />
       ) : (
         <>

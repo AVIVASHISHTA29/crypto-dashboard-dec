@@ -16,11 +16,7 @@ function LineChart({ chartData }) {
     },
   };
 
-  return (
-    <div>
-      <Line data={chartData} options={options} />
-    </div>
-  );
+  return <Line data={chartData} options={options} />;
 }
 
 export default LineChart;
