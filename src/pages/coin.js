@@ -41,6 +41,28 @@ function CoinPage() {
       });
   }, [id]);
 
+  const chartData = {
+    labels: [
+      "Day 1",
+      "Day 2",
+      "Day 3",
+      "Day 4",
+      "Day 5",
+      "Day 6",
+      "Day 7",
+      "Day 8",
+      "Day 9",
+      "Day 10",
+    ],
+    datasets: [
+      {
+        label: "Hello World",
+        data: [90, 48, 73, 26, 75, 14, 37, 22, 81, 30],
+        borderColor: "#fff",
+      },
+    ],
+  };
+
   return (
     <div>
       {loading || !coin?.id ? (
@@ -53,7 +75,7 @@ function CoinPage() {
           </div>
           <div className="grey-wrapper">
             <SelectDays />
-            <LineChart />
+            <LineChart chartData={chartData} />
           </div>
           <CoinInfo name={coin.name} desc={coin.desc} />
         </>
