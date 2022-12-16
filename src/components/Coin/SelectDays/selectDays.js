@@ -2,19 +2,13 @@ import { MenuItem, Select } from "@mui/material";
 import { useState } from "react";
 import "./styles.css";
 
-function SelectDays() {
-  const [days, setDays] = useState(120);
-
-  const handleChange = (event) => {
-    setDays(event.target.value);
-  };
-
+function SelectDays({ days, handleDaysChange }) {
   return (
     <div className="select-days">
       <p>Price Change in </p>
       <Select
         value={days}
-        onChange={handleChange}
+        onChange={handleDaysChange}
         sx={{
           height: "2.5rem",
           color: "var(--white)",

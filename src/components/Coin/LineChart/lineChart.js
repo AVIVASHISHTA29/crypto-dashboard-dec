@@ -4,15 +4,15 @@ import { Chart as ChartJS } from "chart.js/auto"; //Dont get rid of this
 
 function LineChart({ chartData }) {
   const options = {
-    responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        display: false,
       },
-      title: {
-        display: true,
-        text: "Chart.js Line Chart",
-      },
+    },
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
     },
   };
 

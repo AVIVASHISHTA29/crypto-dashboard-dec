@@ -7,16 +7,24 @@ import SelectDays from "../components/Coin/SelectDays/selectDays";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader/loader";
 import List from "../components/Dashboard/List/list";
+import { coinObject } from "../functions/coinObject";
+import { convertDate } from "../functions/convertDate";
 
 function CoinPage() {
   const { id } = useParams();
   const [coinData, setCoinData] = useState();
   const [coin, setCoin] = useState();
   const [loading, setLoading] = useState(false);
+  const [days, setDays] = useState(120);
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [],
   });
+
+  const handleDaysChange = (event) => {
+    setDays(event.target.value);
+    getPrices(event.target.value);
+  };
 
   useEffect(() => {
     getData();
@@ -29,19 +37,8 @@ function CoinPage() {
       .then((response) => {
         console.log("RESPONSE>>>", response.data);
         setCoinData(response.data);
-        setCoin({
-          id: response.data.id,
-          name: response.data.name,
-          symbol: response.data.symbol,
-          image: response.data.image.large,
-          desc: response.data.description.en,
-          price_change_percentage_24h:
-            response.data.market_data.price_change_percentage_24h,
-          total_volume: response.data.market_data.total_volume.usd,
-          current_price: response.data.market_data.current_price.usd,
-          market_cap: response.data.market_data.market_cap.usd,
-        });
-        getPrices();
+        coinObject(setCoin, response.data);
+        getPrices(days);
       })
       .catch((error) => {
         console.log("ERROR>>>", error);
@@ -49,26 +46,26 @@ function CoinPage() {
       });
   };
 
-  const getPrices = () => {
+  const getPrices = (days) => {
     setLoading(false);
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30&interval=daily`
+        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
       )
       .then((response) => {
         console.log("PRICES>>>>", response.data.prices);
         setChartData({
-          labels: response.data.prices.map(
-            (data) =>
-              new Date(data[0]).getDate() +
-              "/" +
-              (new Date(data[0]).getMonth() + 1)
-          ),
+          labels: response.data.prices.map((data) => convertDate(data[0])),
           datasets: [
             {
-              label: coin.name,
+              label: coin?.name ?? "",
               data: response.data.prices.map((data) => data[1]),
-              borderColor: "#fff",
+              borderWidth: 1,
+              fill: true,
+              tension: 0.25,
+              backgroundColor: "rgba(58, 128, 233,0.1)",
+              borderColor: "#3a80e9",
+              pointRadius: 0,
             },
           ],
         });
@@ -90,7 +87,7 @@ function CoinPage() {
             <List coin={coin} delay={0.1} />
           </div>
           <div className="grey-wrapper">
-            <SelectDays />
+            <SelectDays days={days} handleDaysChange={handleDaysChange} />
             <LineChart chartData={chartData} />
           </div>
           <CoinInfo name={coin.name} desc={coin.desc} />
