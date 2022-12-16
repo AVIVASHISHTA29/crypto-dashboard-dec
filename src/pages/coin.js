@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CoinInfo from "../components/Coin/CoinInfo/info";
+import LineChart from "../components/Coin/LineChart/lineChart";
+import SelectDays from "../components/Coin/SelectDays/selectDays";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader/loader";
 import List from "../components/Dashboard/List/list";
@@ -45,7 +48,14 @@ function CoinPage() {
       ) : (
         <>
           <Header />
-          <List coin={coin} delay={1} />
+          <div className="grey-wrapper">
+            <List coin={coin} delay={0.1} />
+          </div>
+          <div className="grey-wrapper">
+            <SelectDays />
+            <LineChart />
+          </div>
+          <CoinInfo name={coin.name} desc={coin.desc} />
         </>
       )}
     </div>
