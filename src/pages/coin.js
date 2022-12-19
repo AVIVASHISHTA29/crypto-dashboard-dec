@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CoinInfo from "../components/Coin/CoinInfo/info";
 import LineChart from "../components/Coin/LineChart/lineChart";
+import PriceToggle from "../components/Coin/PriceToggle/priceToggle";
 import SelectDays from "../components/Coin/SelectDays/selectDays";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader/loader";
@@ -16,6 +17,7 @@ function CoinPage() {
   const [coin, setCoin] = useState();
   const [loading, setLoading] = useState(false);
   const [days, setDays] = useState(120);
+  const [priceType, setPriceType] = useState("prices");
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [],
@@ -23,7 +25,15 @@ function CoinPage() {
 
   const handleDaysChange = async (event) => {
     setDays(event.target.value);
-    const prices = await getCoinPrices(id, event.target.value);
+    const prices = await getCoinPrices(id, event.target.value, priceType);
+    if (prices) {
+      settingChartData(setChartData, coin, prices);
+    }
+  };
+
+  const handlePriceTypeChange = async (event) => {
+    setPriceType(event.target.value);
+    const prices = await getCoinPrices(id, days, event.target.value);
     if (prices) {
       settingChartData(setChartData, coin, prices);
     }
@@ -38,7 +48,7 @@ function CoinPage() {
     const data = await getCoinData(id);
     if (data) {
       coinObject(setCoin, data); //For Coin Obj being passed in the List
-      const prices = await getCoinPrices(id, days);
+      const prices = await getCoinPrices(id, days, priceType);
       if (prices) {
         settingChartData(setChartData, data, prices);
         setLoading(false);
@@ -58,6 +68,10 @@ function CoinPage() {
           </div>
           <div className="grey-wrapper">
             <SelectDays days={days} handleDaysChange={handleDaysChange} />
+            <PriceToggle
+              handlePriceTypeChange={handlePriceTypeChange}
+              priceType={priceType}
+            />
             <LineChart chartData={chartData} />
           </div>
           <CoinInfo name={coin.name} desc={coin.desc} />
