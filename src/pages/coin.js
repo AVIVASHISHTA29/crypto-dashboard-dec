@@ -23,22 +23,6 @@ function CoinPage() {
     datasets: [],
   });
 
-  const handleDaysChange = async (event) => {
-    setDays(event.target.value);
-    const prices = await getCoinPrices(id, event.target.value, priceType);
-    if (prices) {
-      settingChartData(setChartData, coin, prices);
-    }
-  };
-
-  const handlePriceTypeChange = async (event) => {
-    setPriceType(event.target.value);
-    const prices = await getCoinPrices(id, days, event.target.value);
-    if (prices) {
-      settingChartData(setChartData, coin, prices);
-    }
-  };
-
   useEffect(() => {
     getData();
   }, [id]);
@@ -53,6 +37,22 @@ function CoinPage() {
         settingChartData(setChartData, data, prices);
         setLoading(false);
       }
+    }
+  };
+
+  const handleDaysChange = async (event) => {
+    setDays(event.target.value);
+    const prices = await getCoinPrices(id, event.target.value, priceType);
+    if (prices) {
+      settingChartData(setChartData, coin, prices);
+    }
+  };
+
+  const handlePriceTypeChange = async (event) => {
+    setPriceType(event.target.value);
+    const prices = await getCoinPrices(id, days, event.target.value);
+    if (prices) {
+      settingChartData(setChartData, coin, prices);
     }
   };
 
