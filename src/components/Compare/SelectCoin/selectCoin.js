@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import SelectDays from "../../Coin/SelectDays/selectDays";
 import "./styles.css";
 
-function SelectCoin({ allCoins }) {
-  const [coin1, setCoin1] = useState(allCoins[0]?.id ?? "bitcoin");
-  const [coin2, setCoin2] = useState(allCoins[1]?.id ?? "ethereum");
-  const [days, setDays] = useState(120);
-
+function SelectCoin({
+  allCoins,
+  coin1,
+  coin2,
+  days,
+  handleCoinChange,
+  handleDaysChange,
+}) {
   const selectStyle = {
     height: "2.5rem",
     color: "var(--white)",
@@ -30,7 +33,7 @@ function SelectCoin({ allCoins }) {
       <Select
         className="select-coin"
         value={coin1}
-        onChange={(e) => setCoin1(e.target.value)}
+        onChange={(e) => handleCoinChange(e, true)}
         sx={selectStyle}
       >
         {allCoins
@@ -45,7 +48,7 @@ function SelectCoin({ allCoins }) {
       <Select
         className="select-coin"
         value={coin2}
-        onChange={(e) => setCoin2(e.target.value)}
+        onChange={(e) => handleCoinChange(e, false)}
         sx={selectStyle}
       >
         {allCoins
@@ -58,7 +61,7 @@ function SelectCoin({ allCoins }) {
       </Select>
       <SelectDays
         days={days}
-        handleDaysChange={(e) => setDays(e.target.value)}
+        handleDaysChange={(e) => handleDaysChange(e)}
         noText={true}
       />
     </div>
