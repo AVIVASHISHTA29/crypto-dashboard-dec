@@ -34,7 +34,7 @@ function CoinPage() {
       coinObject(setCoin, data); //For Coin Obj being passed in the List
       const prices = await getCoinPrices(id, days, priceType);
       if (prices) {
-        settingChartData(setChartData, data, prices);
+        settingChartData(setChartData, prices, data);
         setLoading(false);
       }
     }
@@ -44,7 +44,7 @@ function CoinPage() {
     setDays(event.target.value);
     const prices = await getCoinPrices(id, event.target.value, priceType);
     if (prices) {
-      settingChartData(setChartData, coin, prices);
+      settingChartData(setChartData, prices, coin);
     }
   };
 
@@ -52,7 +52,7 @@ function CoinPage() {
     setPriceType(event.target.value);
     const prices = await getCoinPrices(id, days, event.target.value);
     if (prices) {
-      settingChartData(setChartData, coin, prices);
+      settingChartData(setChartData, prices, coin);
     }
   };
 
