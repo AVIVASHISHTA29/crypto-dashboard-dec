@@ -15,7 +15,7 @@ import { settingChartData } from "../functions/settingChartData";
 function ComparePage() {
   const [allCoins, setAllCoins] = useState([]);
   const [coin1, setCoin1] = useState(allCoins[0]?.id ?? "bitcoin");
-  const [coin2, setCoin2] = useState(allCoins[1]?.id ?? "zilliqa");
+  const [coin2, setCoin2] = useState(allCoins[1]?.id ?? "ethereum");
   const [days, setDays] = useState(120);
   const [coin1Data, setCoin1Data] = useState();
   const [coin2Data, setCoin2Data] = useState();
