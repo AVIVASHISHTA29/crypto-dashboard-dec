@@ -44,9 +44,12 @@
   }
 }
 @media only screen and (max-width: 800px) {
+  .td-img {
+    margin-right: 0.5rem;
+  }
   .list-row {
     margin-top: 1rem;
-    width: 90%;
+    width: 100%;
     gap: 0rem !important;
   }
   .td-mkt-cap {
@@ -57,6 +60,7 @@
   }
   .coin-price-list {
     font-size: 0.8rem !important;
+    margin-right: 0.5rem;
   }
   .coin-symbol-list,
   .coin-name-list,

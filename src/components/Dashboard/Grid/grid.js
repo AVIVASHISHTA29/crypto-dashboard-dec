@@ -50,12 +50,14 @@ function Grid({ coin, delay, isWatchlistPage }) {
                 className={`watchlist-icon ${
                   coin.price_change_percentage_24h < 0 && "watchlist-icon-red"
                 } `}
+                sx={{ fontSize: "2rem !important" }}
               />
             ) : (
               <StarBorderRoundedIcon
                 className={`watchlist-icon ${
                   coin.price_change_percentage_24h < 0 && "watchlist-icon-red"
                 } `}
+                sx={{ fontSize: "2rem !important" }}
               />
             )}
           </IconButton>

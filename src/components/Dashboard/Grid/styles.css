@@ -137,3 +137,9 @@
   color: var(--white);
   transition: all 0.3s;
 }
+@media only screen and (max-width: 800px) {
+  .watchlist-icon {
+    font-size: 1rem !important;
+    padding: 0.35rem;
+  }
+}

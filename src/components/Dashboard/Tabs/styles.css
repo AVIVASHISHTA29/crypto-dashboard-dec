@@ -7,7 +7,7 @@
 }
 
 .list-flex {
-  width: 80%;
+  width: 90%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -19,5 +19,10 @@
   }
   .tabPanel {
     padding: 0.2rem !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .list-flex {
+    width: 100%;
   }
 }
