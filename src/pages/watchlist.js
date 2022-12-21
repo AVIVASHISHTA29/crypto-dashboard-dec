@@ -29,7 +29,7 @@ function WatchlistPage() {
         <Loader />
       ) : (
         <>
-          {myWatchlist.length == 0 ? (
+          {myWatchlist?.length == 0 ? (
             <>
               <Header />
               <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -44,7 +44,7 @@ function WatchlistPage() {
           ) : (
             <>
               <Header />
-              <TabsComponent coins={myWatchlist} />
+              <TabsComponent coins={myWatchlist} isWatchlistPage={true} />
             </>
           )}
         </>

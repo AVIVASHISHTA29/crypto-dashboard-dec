@@ -12,11 +12,12 @@ import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import { hasBeenAdded } from "../../../functions/hasBeenAdded";
 import { removeFromWatchlist } from "../../../functions/removeFromWatchlist";
 
-function List({ coin, delay }) {
+function List({ coin, delay, isWatchlistPage }) {
   const [added, setAdded] = useState(hasBeenAdded(coin.id));
   return (
     <a href={`/coin/${coin.id}`}>
       <motion.tr
+        style={{ display: isWatchlistPage && !added && "none" }}
         className="list-row"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}

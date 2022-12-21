@@ -10,7 +10,7 @@ import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import { hasBeenAdded } from "../../../functions/hasBeenAdded";
 import { removeFromWatchlist } from "../../../functions/removeFromWatchlist";
 
-function Grid({ coin, delay }) {
+function Grid({ coin, delay, isWatchlistPage }) {
   const [added, setAdded] = useState(hasBeenAdded(coin.id));
 
   return (
@@ -22,6 +22,7 @@ function Grid({ coin, delay }) {
         className={`grid-container ${
           coin.price_change_percentage_24h < 0 && "grid-container-red"
         }`}
+        style={{ display: isWatchlistPage && !added && "none" }}
       >
         <div className="info-flex">
           <div className="coin-info-flex">
