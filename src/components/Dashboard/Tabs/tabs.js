@@ -87,14 +87,12 @@ function TabsComponent({ coins, isWatchlistPage, setSearch }) {
                 </div>
               ) : (
                 coins?.map((coin, i) => (
-                  <tbody>
-                    <List
-                      coin={coin}
-                      key={i}
-                      delay={(i % 10) * 0.1}
-                      isWatchlistPage={isWatchlistPage}
-                    />
-                  </tbody>
+                  <List
+                    coin={coin}
+                    key={i}
+                    delay={(i % 10) * 0.1}
+                    isWatchlistPage={isWatchlistPage}
+                  />
                 ))
               )}
             </table>
