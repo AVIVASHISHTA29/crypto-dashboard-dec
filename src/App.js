@@ -26,3 +26,8 @@ function App() {
 }
 
 export default App;
+
+//TODO: Footer
+//TODO: Mouse Follower
+//TODO: SEO + Code Optimisation + Responsive
+//TODO: Resume Vetting
