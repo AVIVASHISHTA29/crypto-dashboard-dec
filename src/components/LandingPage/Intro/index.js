@@ -4,6 +4,7 @@ import "./styles.css";
 import gradient from "../../../assets/gradient.png";
 import iPhone from "../../../assets/iphone.png";
 import { motion } from "framer-motion";
+import { RWebShare } from "react-web-share";
 
 function LandingPageComponent() {
   return (
@@ -40,8 +41,19 @@ function LandingPageComponent() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <Button text="Dashboard" />
-          <Button text="Share App" outlined={true} />
+          <a href="/dashboard">
+            <Button text="Dashboard" />
+          </a>
+          <RWebShare
+            data={{
+              text: "Crypto Dashboard made using React JS.",
+              url: "https://crypto-dashboard-dec.netlify.app/",
+              title: "CryptoDashboard.",
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <Button text="Share App" outlined={true} />
+          </RWebShare>
         </motion.div>
       </div>
       <div className="landing-right">
