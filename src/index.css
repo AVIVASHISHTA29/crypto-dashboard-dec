@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 :root {
   --white: #fff;
   --black: #111;
@@ -8,6 +7,20 @@
   --darkgrey: #1b1b1b;
   --green: #61c96f;
   --red: #f94141;
+}
+
+[data-theme="dark"] {
+  --white: #ffffff;
+  --black: #111;
+  --grey: #888;
+  --darkgrey: #1b1b1b;
+}
+
+[data-theme="light"] {
+  --white: #111;
+  --black: #fff;
+  --grey: #888;
+  --darkgrey: #f3f3f3;
 }
 
 html {
@@ -21,6 +34,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--black);
   color: var(--white);
+  overflow-x: hidden;
 }
 
 ::selection {

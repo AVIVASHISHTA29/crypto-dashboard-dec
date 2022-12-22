@@ -80,11 +80,11 @@ function ComparePage() {
 
   return (
     <div>
+      <Header />
       {loading || !coin1Data?.id || !coin2Data?.id ? (
         <Loader />
       ) : (
         <>
-          <Header />
           <SelectCoin
             allCoins={allCoins}
             coin1={coin1}

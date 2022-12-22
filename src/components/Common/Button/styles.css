@@ -7,11 +7,12 @@
   cursor: pointer;
   font-weight: 600;
   width: fit-content;
+  color: #fff;
+  transition: all 0.3s;
 }
 
 .btn-div:hover {
   box-shadow: 4px 4px 10px rgba(58, 128, 233, 0.5);
-  transition: all 0.3s;
 }
 
 .btn-outlined {

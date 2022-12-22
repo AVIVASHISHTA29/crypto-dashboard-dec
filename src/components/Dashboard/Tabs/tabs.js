@@ -7,8 +7,9 @@ import { Box, createTheme, ThemeProvider } from "@mui/material";
 import "./styles.css";
 import Grid from "../Grid/grid";
 import List from "../List/list";
+import Button from "../../Common/Button/button";
 
-function TabsComponent({ coins, isWatchlistPage }) {
+function TabsComponent({ coins, isWatchlistPage, setSearch }) {
   const [tabValue, setTabValue] = useState("grid");
 
   const handleChange = (event, newValue) => {
@@ -42,26 +43,60 @@ function TabsComponent({ coins, isWatchlistPage }) {
           </TabList>
           <TabPanel value="grid" className="tabPanel">
             <Box className="grid-flex">
-              {coins?.map((coin, i) => (
-                <Grid
-                  coin={coin}
-                  key={i}
-                  delay={((i + 5) % 5) * 0.1}
-                  isWatchlistPage={isWatchlistPage}
-                />
-              ))}
+              {coins.length == 0 ? (
+                <div>
+                  <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
+                    No Items Found
+                  </h1>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Button
+                      text={"Clear Search"}
+                      onClick={(e) => {
+                        setSearch("");
+                      }}
+                    />
+                  </div>
+                </div>
+              ) : (
+                coins?.map((coin, i) => (
+                  <Grid
+                    coin={coin}
+                    key={i}
+                    delay={((i + 5) % 5) * 0.1}
+                    isWatchlistPage={isWatchlistPage}
+                  />
+                ))
+              )}
             </Box>
           </TabPanel>
           <TabPanel value="list" className="tabPanel">
             <table className="list-flex">
-              {coins?.map((coin, i) => (
-                <List
-                  coin={coin}
-                  key={i}
-                  delay={(i % 10) * 0.1}
-                  isWatchlistPage={isWatchlistPage}
-                />
-              ))}
+              {coins.length == 0 ? (
+                <div>
+                  <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
+                    No Items Found
+                  </h1>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Button
+                      text={"Clear Search"}
+                      onClick={(e) => {
+                        setSearch("");
+                      }}
+                    />
+                  </div>
+                </div>
+              ) : (
+                coins?.map((coin, i) => (
+                  <tbody>
+                    <List
+                      coin={coin}
+                      key={i}
+                      delay={(i % 10) * 0.1}
+                      isWatchlistPage={isWatchlistPage}
+                    />
+                  </tbody>
+                ))
+              )}
             </table>
           </TabPanel>
         </TabContext>

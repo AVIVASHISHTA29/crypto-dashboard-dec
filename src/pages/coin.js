@@ -58,11 +58,11 @@ function CoinPage() {
 
   return (
     <div>
+      <Header />
       {loading || !coin?.id || !chartData ? (
         <Loader />
       ) : (
         <>
-          <Header />
           <div className="grey-wrapper">
             <List coin={coin} delay={0.1} />
           </div>

@@ -19,7 +19,9 @@ function WatchlistPage() {
     console.log("COINS>>>", coins);
     const allCoins = await get100Coins();
     console.log("ALLCOINS>>>", allCoins);
-    setMyWatchlist(allCoins.filter((item) => coins.includes(item.id)));
+    if (coins) {
+      setMyWatchlist(allCoins.filter((item) => coins.includes(item.id)));
+    }
     setLoading(false);
   };
 
@@ -29,7 +31,7 @@ function WatchlistPage() {
         <Loader />
       ) : (
         <>
-          {myWatchlist?.length == 0 ? (
+          {myWatchlist?.length == 0 || !coins ? (
             <>
               <Header />
               <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
