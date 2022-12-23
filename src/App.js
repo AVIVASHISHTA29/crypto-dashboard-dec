@@ -65,6 +65,5 @@ function App() {
 
 export default App;
 
-//TODO: Footer + Mouse Follower
-//TODO: SEO + Code Optimisation + Responsive
-//TODO: Resume Vetting
+//TODO 26th Dec: SEO + Code Optimisation +Good practices to opt as developers + Responsive
+//TODO 27th Dec: Resume Vetting

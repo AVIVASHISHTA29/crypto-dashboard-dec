@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CoinInfo from "../components/Coin/CoinInfo/info";
 import LineChart from "../components/Coin/LineChart/lineChart";
 import PriceToggle from "../components/Coin/PriceToggle/priceToggle";
+import Footer from "../components/Common/Footer/footer";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader/loader";
 import SelectCoin from "../components/Compare/SelectCoin/selectCoin";
@@ -114,6 +115,7 @@ function ComparePage() {
           <CoinInfo name={coin2Data.name} desc={coin2Data.desc} />
         </>
       )}
+      <Footer />
     </div>
   );
 }

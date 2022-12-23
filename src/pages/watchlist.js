@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "../components/Common/Button/button";
+import Footer from "../components/Common/Footer/footer";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader/loader";
 import TabsComponent from "../components/Dashboard/Tabs/tabs";
@@ -32,7 +33,7 @@ function WatchlistPage() {
       ) : (
         <>
           {myWatchlist?.length == 0 || !coins ? (
-            <>
+            <div style={{ minHeight: "90vh" }}>
               <Header />
               <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
                 No Items in the Watchlist
@@ -42,7 +43,7 @@ function WatchlistPage() {
                   <Button text={"Dashboard"} />
                 </a>
               </div>
-            </>
+            </div>
           ) : (
             <>
               <Header />
@@ -51,6 +52,7 @@ function WatchlistPage() {
           )}
         </>
       )}
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import TopButton from "../components/Common/BackToTop/topButton";
+import Footer from "../components/Common/Footer/footer";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader/loader";
 import PaginationComponent from "../components/Dashboard/Pagination/pagination";
@@ -58,7 +59,7 @@ function DashboardPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div>
+        <div style={{ minHeight: "90vh" }}>
           <Header />
           <SearchComponent search={search} onChange={onChange} />
           <TabsComponent
@@ -73,6 +74,7 @@ function DashboardPage() {
           )}
         </div>
       )}
+      <Footer />
     </>
   );
 }

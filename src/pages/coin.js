@@ -4,6 +4,7 @@ import CoinInfo from "../components/Coin/CoinInfo/info";
 import LineChart from "../components/Coin/LineChart/lineChart";
 import PriceToggle from "../components/Coin/PriceToggle/priceToggle";
 import SelectDays from "../components/Coin/SelectDays/selectDays";
+import Footer from "../components/Common/Footer/footer";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader/loader";
 import List from "../components/Dashboard/List/list";
@@ -77,6 +78,7 @@ function CoinPage() {
           <CoinInfo name={coin.name} desc={coin.desc} />
         </>
       )}
+      <Footer />
     </div>
   );
 }
