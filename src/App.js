@@ -65,5 +65,5 @@ function App() {
 
 export default App;
 
-//TODO 26th Dec: SEO + Code Optimisation +Good practices to opt as developers + Responsive
+//TODO 26th Dec: SEO + Code Optimisation + Good practices to opt as developers + Responsive
 //TODO 27th Dec: Resume Vetting
