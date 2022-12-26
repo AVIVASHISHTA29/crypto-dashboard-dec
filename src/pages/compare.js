@@ -28,13 +28,16 @@ function ComparePage() {
   });
 
   const handlePriceTypeChange = async (e) => {
+    setLoading(true);
     setPriceType(e.target.value);
     const prices1 = await getCoinPrices(coin1, days, e.target.value);
     const prices2 = await getCoinPrices(coin2, days, e.target.value);
     settingChartData(setChartData, prices1, coin1Data, coin2Data, prices2);
+    setLoading(false);
   };
 
   const handleCoinChange = async (e, isCoin1) => {
+    setLoading(true);
     if (isCoin1) {
       setCoin1(e.target.value);
       const data1 = await getCoinData(e.target.value);
@@ -50,13 +53,16 @@ function ComparePage() {
       const prices2 = await getCoinPrices(e.target.value, days, priceType);
       settingChartData(setChartData, prices1, coin1Data, data2, prices2);
     }
+    setLoading(false);
   };
 
   const handleDaysChange = async (e) => {
+    setLoading(true);
     setDays(e.target.value);
     const prices1 = await getCoinPrices(coin1, e.target.value, priceType);
     const prices2 = await getCoinPrices(coin2, e.target.value, priceType);
     settingChartData(setChartData, prices1, coin1Data, coin2Data, prices2);
+    setLoading(false);
   };
 
   useEffect(() => {

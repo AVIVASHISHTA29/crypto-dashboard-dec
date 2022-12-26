@@ -1,9 +1,10 @@
 import axios from "axios";
+import { API_URL } from "../constants";
 
 export const getCoinPrices = (id, days, priceType) => {
   const prices = axios
     .get(
-      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
+      `${API_URL}/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
     )
     .then((response) => {
       if (priceType == "market_caps") {

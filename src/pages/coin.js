@@ -42,19 +42,23 @@ function CoinPage() {
   };
 
   const handleDaysChange = async (event) => {
+    setLoading(true);
     setDays(event.target.value);
     const prices = await getCoinPrices(id, event.target.value, priceType);
     if (prices) {
       settingChartData(setChartData, prices, coin);
+      setLoading(false);
     }
   };
 
   const handlePriceTypeChange = async (event) => {
+    setLoading(true);
     setPriceType(event.target.value);
     const prices = await getCoinPrices(id, days, event.target.value);
     if (prices) {
       settingChartData(setChartData, prices, coin);
     }
+    setLoading(false);
   };
 
   return (
