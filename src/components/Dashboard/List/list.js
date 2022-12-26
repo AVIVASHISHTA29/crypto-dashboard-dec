@@ -37,7 +37,7 @@ function List({ coin, delay, isWatchlistPage }) {
           </td>
         </Tooltip>
         <Tooltip placement="bottom-start" title="Price">
-          <td>
+          <td className="td-price-chip-list">
             {coin.price_change_percentage_24h > 0 ? (
               <div className="info-flex" style={{ marginBottom: 0 }}>
                 <div className="price-chip price-chip-list">
@@ -58,11 +58,18 @@ function List({ coin, delay, isWatchlistPage }) {
         <Tooltip placement="bottom-start" title="Curent Price">
           <td>
             <p
-              className={`coin-price coin-price-list ${
+              className={`coin-price coin-price-list desktop-price ${
                 coin.price_change_percentage_24h < 0 && "coin-price-red"
               }`}
             >
               ${coin.current_price.toLocaleString()}
+            </p>
+            <p
+              className={`coin-price coin-price-list mobile-price ${
+                coin.price_change_percentage_24h < 0 && "coin-price-red"
+              }`}
+            >
+              ${convertNumbers(parseInt(coin.current_price))}
             </p>
           </td>
         </Tooltip>
@@ -87,7 +94,7 @@ function List({ coin, delay, isWatchlistPage }) {
             </span>
           </td>
         </Tooltip>
-        <td>
+        <td style={{ width: "fit-content" }}>
           <IconButton
             onClick={(e) => {
               e.preventDefault();

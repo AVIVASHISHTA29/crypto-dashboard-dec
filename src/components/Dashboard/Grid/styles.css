@@ -19,8 +19,9 @@
 
 .info-flex {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .coin-info-flex {

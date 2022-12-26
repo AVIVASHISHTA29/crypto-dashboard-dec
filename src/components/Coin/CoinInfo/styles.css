@@ -27,3 +27,11 @@
 .coin-desc-para a:hover {
   color: var(--blue) !important;
 }
+
+@media only screen and (max-width: 800px) {
+  .grey-wrapper {
+    width: auto;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}

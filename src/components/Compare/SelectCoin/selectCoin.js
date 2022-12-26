@@ -44,6 +44,7 @@ function SelectCoin({
             </MenuItem>
           ))}
       </Select>
+
       <p>Crypto 2</p>
       <Select
         className="select-coin"
@@ -59,6 +60,7 @@ function SelectCoin({
             </MenuItem>
           ))}
       </Select>
+
       <SelectDays
         days={days}
         handleDaysChange={(e) => handleDaysChange(e)}
