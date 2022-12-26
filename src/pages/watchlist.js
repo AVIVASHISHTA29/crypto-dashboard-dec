@@ -17,9 +17,7 @@ function WatchlistPage() {
 
   const getData = async () => {
     setLoading(true);
-    console.log("COINS>>>", coins);
     const allCoins = await get100Coins();
-    console.log("ALLCOINS>>>", allCoins);
     if (coins) {
       setMyWatchlist(allCoins.filter((item) => coins.includes(item.id)));
     }
@@ -45,10 +43,10 @@ function WatchlistPage() {
               </div>
             </div>
           ) : (
-            <>
+            <div style={{ height: "95vh" }}>
               <Header />
               <TabsComponent coins={myWatchlist} isWatchlistPage={true} />
-            </>
+            </div>
           )}
         </>
       )}

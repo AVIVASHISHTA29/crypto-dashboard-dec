@@ -127,3 +127,9 @@
     justify-content: center;
   }
 }
+
+@media only screen and (max-width: 380px) {
+  .landing-wrapper {
+    height: 120vh;
+  }
+}

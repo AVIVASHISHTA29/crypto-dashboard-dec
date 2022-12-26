@@ -15,12 +15,9 @@ function DashboardPage() {
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
+
   const handlePageChange = (event, value) => {
-    console.log("Page number1 ", value);
     setPageNumber(value);
-    // Page 1 - [0,10)
-    // Page 2 - [10,20)
-    // Page 3 - [20,30)
     var startingIndex = (value - 1) * 10;
     setPaginatedCoins(coins.slice(startingIndex, startingIndex + 10));
   };
@@ -43,7 +40,6 @@ function DashboardPage() {
   }, []);
 
   const getData = async () => {
-    // Call the API and get the data
     setLoading(true);
     const data = await get100Coins();
     if (data) {
