@@ -19,8 +19,8 @@
 
 .info-flex {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 1rem;
 }
 

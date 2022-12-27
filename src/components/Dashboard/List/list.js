@@ -69,7 +69,12 @@ function List({ coin, delay, isWatchlistPage }) {
                 coin.price_change_percentage_24h < 0 && "coin-price-red"
               }`}
             >
-              ${convertNumbers(parseInt(coin.current_price))}
+              $
+              {convertNumbers(
+                coin.current_price < 1
+                  ? parseFloat(coin.current_price).toFixed(3)
+                  : parseInt(coin.current_price)
+              )}
             </p>
           </td>
         </Tooltip>
@@ -90,7 +95,7 @@ function List({ coin, delay, isWatchlistPage }) {
         <Tooltip placement="bottom-start" title="Market Cap">
           <td className="mobile-td-cap">
             <span className="coin-total_volume coin-total_volume-list">
-              ${convertNumbers(parseInt(coin.market_cap))}
+              ${convertNumbers(parseFloat(coin.market_cap))}
             </span>
           </td>
         </Tooltip>

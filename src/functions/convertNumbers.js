@@ -1,6 +1,8 @@
 export const convertNumbers = (number) => {
   if (number) {
-    if (number >= 1000 && number < 1000000) {
+    if (number < 1000) {
+      return number;
+    } else if (number >= 1000 && number < 1000000) {
       return (
         number.toString().slice(0, -3) +
         "." +

@@ -65,5 +65,6 @@ function App() {
 
 export default App;
 
-//TODO 26th Dec: SEO + Code Optimisation + Good practices to opt as developers + Responsive
-//TODO 27th Dec: Resume Vetting + Interview Questions
+// 1. Is it working and functional? Is it responsive? Is it quick? Does it have a good User Experience?
+// 2. What are the features? And how do you explain it to the interviewer.
+// 3. Questions the interviewer can ask.
